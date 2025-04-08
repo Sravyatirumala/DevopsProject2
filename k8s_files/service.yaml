@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pandacloud-app
+  namespace: my-namespace
   labels:
     app: pandacloud-app
 spec:
