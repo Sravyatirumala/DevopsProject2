@@ -34,7 +34,8 @@ pipeline {
                     else
                         # If namespace does not exist, create it and install Helm release
                         kubectl create namespace prometheus
-                        helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+                        helm upgrade --install stable prometheus-community/kube-prometheus-stack -n prometheus
+
                     fi
                     kubectl patch svc stable-kube-prometheus-sta-prometheus -n prometheus -p '{"spec": {"type": "LoadBalancer"}}'
                     kubectl patch svc stable-grafana -n prometheus -p '{"spec": {"type": "LoadBalancer"}}'
